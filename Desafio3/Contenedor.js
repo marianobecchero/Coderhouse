@@ -17,23 +17,6 @@ class Contenedor{
         }
     }
 
-    // getAllNombreProductos = async() => {
-    //     try {
-    //         let arrProductos = []
-    //         const arrObjeto = await this.getAll();
-
-    //         for (const objeto of arrObjeto){
-    //             arrProductos.push(objeto.title)
-    //         }
-
-    //         return arrProductos
-    //     } catch (error) {
-    //         await fs.promises.writeFile(this.nombreArchivo, JSON.stringify([], null, 2));
-    //         const contenidoObjeto = await fs.promises.readFile(this.nombreArchivo, 'utf-8');
-    //         return JSON.parse(contenidoObjeto);
-    //     }
-    // }
-
     save = async objeto => {
         const arrObjeto = await this.getAll();
         objeto.id = arrObjeto.length + 1;

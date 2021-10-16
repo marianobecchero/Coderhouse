@@ -4,40 +4,17 @@ const {Contenedor} = require('./Contenedor')
 const app = express()
 const contenedor = new Contenedor("Productos.txt");
 
-
-// const productos = async() =>{
-//     let arrProductos = []
-//     const arrObjeto = await contenedor.getAll();
-
-//     for (const objeto of arrObjeto){
-//         arrProductos.push(objeto.title)
-//     }
-
-//     return arrProductos
-// }
-
-/*const imprimir = async() =>{
-    console.log(await contenedor.getAllNombreProductos()) 
-}*/
-
-//imprimir()
-
 const servidor = async() =>{
     let arrProductos = []
     const arrObjeto = await contenedor.getAll();
 
-    for (const objeto of arrObjeto){
-        arrProductos.push(objeto.title)
-    }
-
-
     app.get('/productos', (req,res) => {
-        /*let str = ""
-        for (const producto of arrProductos){
-            str = str + producto.title + "<br>"
-        }*/
+        res.send(arrObjeto)
         
-        res.send(`${arrProductos}`)
+    })
+
+    app.get('/productoRandom', (req,res) => {
+        res.send(arrObjeto[Math.floor(Math.random() * arrObjeto.length)])
         
     })
     
