@@ -1,0 +1,27 @@
+<h2 style="color:crimson;">Lista de productos</h2>
+
+<% const hayProductos = productos.length > 0; %>
+<% if(hayProductos){ %>
+<table>
+    <tr style="color: blueviolet;">
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>URL</th>
+    </tr>
+    <% for (const producto of productos) {%>
+    <tr>
+        <td>
+            <%=producto.title%>
+        </td>
+        <td>
+            <%=producto.price%>
+        </td>
+        <td>
+            <img src="<%=producto.thumbnail%>" width="20px"/>
+        </td>
+    </tr>
+    <%};%>
+</table>
+<% } else { %>
+<h3>no se encontraron datos</h3>
+<% } %>
