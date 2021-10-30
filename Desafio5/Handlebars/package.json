@@ -1,0 +1,19 @@
+{
+  "name": "Desafio5",
+  "version": "1.0.0",
+  "main": "/main.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "router": "^1.3.5"
+  },
+  "dependencies": {
+    "express-handlebars": "^5.3.4"
+  },
+  "description": ""
+}

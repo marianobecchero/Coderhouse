@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Escuadra",
+    "price": 123.45,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+    "id": 1
+  },
+  {
+    "title": "Calculadora",
+    "price": 234.56,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+    "id": 2
+  },
+  {
+    "title": "Globo Terr�queo",
+    "price": 345.67,
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
+    "id": 3
+  },
+  {
+    "title": "Banana",
+    "price": "8",
+    "thumbnail": "sadasd",
+    "id": 5
+  },
+  {
+    "title": "Mandarina",
+    "price": "84",
+    "thumbnail": "sadsa",
+    "id": 6
+  },
+  {
+    "title": "Tornillo",
+    "price": "8",
+    "thumbnail": "56465",
+    "id": 7
+  },
+  {
+    "title": "Vaso",
+    "price": "5.3",
+    "thumbnail": "sdfsdhfuidshf",
+    "id": 8
+  },
+  {
+    "title": "Plato",
+    "price": "80",
+    "thumbnail": "8489sdsd",
+    "id": 9
+  }
+]

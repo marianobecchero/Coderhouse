@@ -1,0 +1,9 @@
+html
+    head
+        title='Listado de productos'
+    body
+        h2= 'Lista de productos'
+        ul
+            for producto in productos
+                li= 'Producto: ' + producto.title + ', Precio: ' + producto.price + ', URL: ' + producto.thumbnail
+        button(onclick="window.location.href='/'") Ir a carga de productos

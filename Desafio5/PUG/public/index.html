@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carga de productos</title>
+
+    <style type="text/css">
+        .sin_vinetas {
+            list-style-type: none
+        }
+    </style>
+</head>
+<form action='/api/productos' method='post'>
+    <ul class="sin_vinetas">
+        <li>
+            <label for='title'>Nombre del producto:</label>
+            <input type='text' id='title' name='title'>
+        </li>
+        <li>
+            <label for='price'>Precio:</label>
+            <input type='number' step="0.01" id='price' name='price'>
+        </li>
+        <li>
+            <label for='thumbnail'>URL imagen:</label>
+            <input for='text' id='thumbnail' name='thumbnail'>
+        </li>
+        <li class='button'>
+            <button type='submit'>Aceptar</button>
+        </li>
+    </ul>
+</form>
+<form action="/api/productos" method="get">
+    <button type='submit'>Ver productos</button>
+</form>
+<body>
+    
+</body>
+</html>

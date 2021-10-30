@@ -1,0 +1,8 @@
+<h1>Listado de productos</h1>
+<ul>
+    {{#each productos}}
+        <li>Producto: {{this.title}} - Precio: {{this.price}} - URL: {{this.thumbnail}}</li>
+    {{/each}}
+</ul>
+
+<button onclick="window.location.href='/'">Ir a carga de productos</button>
