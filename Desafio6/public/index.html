@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de productos</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+    <style type="text/css">
+        .sin_vinetas {
+            list-style-type: none
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Listado de productos</h1>
+    
+    <form onsubmit="return addProducto(this)">
+        <ul class="sin_vinetas">
+            <li>
+                <label for='title'>Nombre del producto:</label>
+                <input type='text' id='title' name='title'>
+            </li>
+            <li>
+                <label for='price'>Precio:</label>
+                <input type='number' step="0.01" id='price' name='price'>
+            </li>
+            <li>
+                <label for='thumbnail'>URL imagen:</label>
+                <input for='text' id='thumbnail' name='thumbnail'>
+            </li>
+            <li class='button'>
+                <button type='submit'>Aceptar</button>
+            </li>
+        </ul>
+    </form>
+
+    <div id="productos"></div>
+    
+</body>
+</html>

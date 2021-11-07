@@ -18,9 +18,39 @@
     "id": 3
   },
   {
+    "title": "Banana",
+    "price": "8",
+    "thumbnail": "sadasd",
+    "id": 5
+  },
+  {
+    "title": "Mandarina",
+    "price": "84",
+    "thumbnail": "sadsa",
+    "id": 6
+  },
+  {
     "title": "Tornillo",
     "price": "8",
-    "thumbnail": "https://cdn0.iconfinder.com/data/icons/construction-2-21/512/construction-industry-building-28-512.png",
-    "id": 4
+    "thumbnail": "56465",
+    "id": 7
+  },
+  {
+    "title": "Vaso",
+    "price": "5.3",
+    "thumbnail": "sdfsdhfuidshf",
+    "id": 8
+  },
+  {
+    "title": "Billetera",
+    "price": "200",
+    "thumbnail": "dsfsdfdsf",
+    "id": 9
+  },
+  {
+    "title": "Anteojos",
+    "price": "82",
+    "thumbnail": "sdfdsf",
+    "id": 10
   }
 ]
