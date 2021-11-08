@@ -10,7 +10,7 @@ routerProductos.get('/', (req,res) => {
     const test = async() =>{
         const productos = await contenedor.getAll()
         //res.render('datos.hbs', {productos: productos})
-        req.socket.emit('message', productos)
+        //req.socket.emit('message', productos)
         res.send
     }
     test()

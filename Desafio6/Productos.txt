@@ -18,39 +18,15 @@
     "id": 3
   },
   {
-    "title": "Banana",
-    "price": "8",
-    "thumbnail": "sadasd",
-    "id": 5
-  },
-  {
-    "title": "Mandarina",
-    "price": "84",
-    "thumbnail": "sadsa",
-    "id": 6
-  },
-  {
-    "title": "Tornillo",
-    "price": "8",
-    "thumbnail": "56465",
-    "id": 7
-  },
-  {
-    "title": "Vaso",
-    "price": "5.3",
-    "thumbnail": "sdfsdhfuidshf",
-    "id": 8
+    "title": "Mesa",
+    "price": "755",
+    "thumbnail": "https://cdn2.iconfinder.com/data/icons/architecture-interior/24/architecture-interior-28-512.png",
+    "id": 4
   },
   {
     "title": "Billetera",
-    "price": "200",
-    "thumbnail": "dsfsdfdsf",
-    "id": 9
-  },
-  {
-    "title": "Anteojos",
-    "price": "82",
-    "thumbnail": "sdfdsf",
-    "id": 10
+    "price": "74",
+    "thumbnail": "sad",
+    "id": 5
   }
 ]
