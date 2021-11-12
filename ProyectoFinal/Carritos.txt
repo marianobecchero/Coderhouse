@@ -1,0 +1,27 @@
+[
+  {
+    "productos": [],
+    "timestamp": "2021-11-12T17:11:35.234Z",
+    "id": 1
+  },
+  {
+    "productos": [
+      {
+        "nombre": "Silla",
+        "descripcion": "Tiene 4 patas",
+        "precio": 500,
+        "thumbnail": "https://cdn3.iconfinder.com/data/icons/delta/256/Chair.png",
+        "codigo": "sila5612548",
+        "stock": 4,
+        "id": 2
+      }
+    ],
+    "timestamp": "2021-11-12T17:11:35.913Z",
+    "id": 2
+  },
+  {
+    "productos": [],
+    "timestamp": "2021-11-12T18:44:49.620Z",
+    "id": 4
+  }
+]
