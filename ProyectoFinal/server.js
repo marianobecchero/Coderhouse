@@ -10,8 +10,14 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(express.static('public'))
 
+
+
 app.use('/api/productos', routerProductos)
 app.use('/api/carritos', routerCarritos)
+
+app.all('*', (req, res) => {
+    res.json({ error : -2, descripcion: `ruta '${req.url}' método ${req.method} no implementada`})
+})
 
 const PORT = 8080
 
