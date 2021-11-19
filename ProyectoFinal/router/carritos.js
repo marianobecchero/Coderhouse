@@ -1,16 +1,9 @@
 const { Router } = require('express')
-const {Contenedor} = require('../contenedor/contCarritos')
+const {ContenedorCarritos} = require('../contenedor/contCarritos')
 
-const contenedor = new Contenedor("Carritos.txt");
+const contenedorCarritos = new ContenedorCarritos("Carritos.txt");
 
 const routerCarritos = Router();
-
-/*routerCarritos.get('/', (req,res) => {
-    const test = async() =>{
-        res.json(await contenedor.getAll())
-    }
-    test()
-})*/
 
 routerCarritos.get('/:id/productos', (req,res) => {
     const test = async() =>{
@@ -19,7 +12,7 @@ routerCarritos.get('/:id/productos', (req,res) => {
         if (isNaN(id)) {
             res.json({ error: 'El parámetro ingresado no es un número' })
         } else {
-            const carrito = await contenedor.getById(id)
+            const carrito = await contenedorCarritos.getById(id)
 
             if (carrito === null){
                 res.json({ error : 'Carrito no encontrado' })
@@ -35,7 +28,7 @@ routerCarritos.get('/:id/productos', (req,res) => {
 
 routerCarritos.post('/', (req,res) => {
     const test = async() =>{
-        const idObjeto = await contenedor.save()
+        const idObjeto = await contenedorCarritos.save()
 
         res.json({ Correcto: 'El carrito se agregó correctamente con ID: ' + idObjeto })
 
@@ -50,14 +43,14 @@ routerCarritos.post('/:id/productos', (req,res) => {
         if (isNaN(id)) {
             res.json({ error: 'El parámetro ingresado no es un número' })
         } else {
-            const productos = req.body
+            const producto = req.body
 
-            const existeCarrito = await contenedor.addProductos(productos, id)
+            const existeCarrito = await contenedorCarritos.addProducto(producto, id)
 
             if (existeCarrito === null) {
                 res.json({ error: 'El carrito no existe o la lista de productos está vacía' })
             } else {
-                res.json({ Correcto: 'Los productos se agregaron correctamente' })
+                res.json({ Correcto: 'El producto se agregó correctamente' })
             }
         }
     }
@@ -71,7 +64,7 @@ routerCarritos.delete('/:id', (req,res) => {
         if (isNaN(id)) {
             res.json({ error: 'El parámetro ingresado no es un número' })
         } else {
-            const objExiste = await contenedor.deleteById(id)
+            const objExiste = await contenedorCarritos.deleteById(id)
 
             if (objExiste === null){
                 res.json({ error : 'Carrito no encontrado' })
@@ -91,7 +84,7 @@ routerCarritos.delete('/:id/productos/:id_prod', (req,res) => {
         if (isNaN(idCarrito) || isNaN(idProducto)) {
             res.json({ error: 'El parámetro ingresado no es un número' })
         } else {
-            const objExiste = await contenedor.deleteProductoEnCarrito(idProducto, idCarrito)
+            const objExiste = await contenedorCarritos.deleteProductoEnCarrito(idProducto, idCarrito)
 
             if (objExiste === null) {
                 res.json({ error : 'Carrito o producto no encontrado' })

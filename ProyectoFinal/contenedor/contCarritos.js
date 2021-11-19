@@ -1,6 +1,9 @@
 const fs = require ('fs');
+const {ContenedorProductos} = require('../contenedor/contProductos')
 
-class Contenedor{
+const contenedorProductos = new ContenedorProductos("Productos.txt");
+
+class ContenedorCarritos{
     
     constructor(nombreArchivo){
         this.nombreArchivo = nombreArchivo;
@@ -55,16 +58,17 @@ class Contenedor{
         }
     }
 
-    addProductos = async (arrProductos, id) => {
+    addProducto = async (producto, id) => {
         const arrObjeto = await this.getAll();
 
         const indexCarrito = arrObjeto.findIndex(obj => obj.id === id)
         const objeto = arrObjeto.find(obj => obj.id === id)
 
-        if (objeto === undefined || arrProductos.length < 1){
+        if (objeto === undefined || producto.length < 1){
             return null
         } else {
-            arrObjeto[indexCarrito].productos.push(arrProductos)
+            const productoAgregar = await contenedorProductos.getById(producto.id)
+            arrObjeto[indexCarrito].productos.push(productoAgregar)
         }
 
         try {
@@ -117,4 +121,4 @@ class Contenedor{
     
 }
 
-module.exports = {Contenedor};
+module.exports = {ContenedorCarritos};

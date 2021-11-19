@@ -1,7 +1,7 @@
 const { Router } = require('express')
-const {Contenedor} = require('../contenedor/contProductos')
+const {ContenedorProductos} = require('../contenedor/contProductos')
 
-const contenedor = new Contenedor("Productos.txt");
+const contenedorProductos = new ContenedorProductos("Productos.txt");
 
 const routerProductos = Router();
 
@@ -9,7 +9,7 @@ const esAdministrador = true
 
 routerProductos.get('/', (req,res) => {
     const test = async() =>{
-        res.json(await contenedor.getAll())
+        res.json(await contenedorProductos.getAll())
     }
     test()
 })
@@ -23,7 +23,7 @@ routerProductos.get('/:id', (req,res) => {
         if (isNaN(id)) {
             res.json({ error: 'El parámetro ingresado no es un número' })
         } else {
-            const producto = await contenedor.getById(id)
+            const producto = await contenedorProductos.getById(id)
 
             if (producto === null){
                 res.json({ error : 'Producto no encontrado' })
@@ -43,7 +43,7 @@ routerProductos.post('/', (req,res) => {
         } else {
             const productoNuevo = req.body
 
-            await contenedor.save(productoNuevo)
+            await contenedorProductos.save(productoNuevo)
 
             res.json({ Correcto: 'El producto se agregó correctamente' })
         }
@@ -65,7 +65,7 @@ routerProductos.put('/:id', (req,res) => {
                 const objeto = req.body
                 objeto.id = id
 
-                const objExiste = await contenedor.update(objeto)
+                const objExiste = await contenedorProductos.update(objeto)
 
                 if (objExiste === null) {
                     res.json({ error : 'producto no encontrado' })
@@ -89,7 +89,7 @@ routerProductos.delete('/:id', (req,res) => {
             if (isNaN(id)) {
                 res.json({ error: 'El parámetro ingresado no es un número' })
             } else {
-                const objExiste = await contenedor.deleteById(id)
+                const objExiste = await contenedorProductos.deleteById(id)
 
                 if (objExiste === null) {
                     res.json({ error : 'Producto no encontrado' })
