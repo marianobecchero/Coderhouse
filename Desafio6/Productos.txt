@@ -28,5 +28,11 @@
     "price": "74",
     "thumbnail": "sad",
     "id": 5
+  },
+  {
+    "title": "Escritorio",
+    "price": "84",
+    "thumbnail": "jhjhjh",
+    "id": 6
   }
 ]

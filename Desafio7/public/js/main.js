@@ -78,7 +78,7 @@ formMensajes.addEventListener('submit', e => {
     document.getElementById('txtEmail').value
     const mensaje = {
         email: formMensajes[ 0 ].value,
-        fecha: fecha,
+        fecha: fecha.toISOString(),
         mensaje: formMensajes[ 1 ].value
     }
 
