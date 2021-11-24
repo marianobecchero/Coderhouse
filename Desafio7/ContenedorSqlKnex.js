@@ -7,28 +7,39 @@ class ClienteSql {
     }
 
     crearTablaMensajes(){
-      this.knex.schema.hasTable(this.tabla).then(function(exists){
-        if (!exists){
-          return this.knex.schema.createTable(this.tabla, function(t) {
+     //this.knex.schema.hasTable(this.tabla).then(function(exists){
+        //if (!exists){
+          return this.knex.schema.createTableIfNotExists(this.tabla, function(t) {
             t.string('email', 50).notNullable();
             t.string('fecha', 50).notNullable();
             t.string('mensaje', 200).notNullable();
           })
-        }
-      })
+       //}
+      //})
+
+      /*return this.knex.schema('mensajes')
+      .finally(() => {
+        return this.knex.schema.createTable('mensajes', table => {
+            //table.increments('id').primary();
+            table.string('email', 50).notNullable();
+            table.string('fecha', 50).notNullable();
+            table.string('mensaje', 200).notNullable();
+          })
+        })*/
+
     }
 
     crearTablaProductos(){
-      this.knex.schema.hasTable(this.tabla).then(function(exists){
-        if (!exists){
-          return this.knex.schema.createTable(this.tabla, function(t) {
-            table.increments('id').primary();
+      //this.knex.schema.hasTable(this.tabla).then(function(exists){
+        //if (!exists){
+          return this.knex.schema.createTableIfNotExists(this.tabla, function(t) {
+            t.increments('id').primary();
             t.string('title', 50).notNullable();
             t.float('price').notNullable();
             t.string('thumbnail', 200).notNullable();
           })
-        }
-      })
+        //}
+      //})
     }
   
     /*crearTabla() {
@@ -43,12 +54,12 @@ class ClienteSql {
         })
     }*/
   
-    insertar(producto) {
-      return this.knex(this.tabla).insert(producto)
+    insertar(objeto) {
+        return this.knex(this.tabla).insert(objeto)
     }
   
     listarTodos() {
-      return this.knex(this.tabla).select('*')
+        return this.knex(this.tabla).select('*')
     }
 
     listarById(id){

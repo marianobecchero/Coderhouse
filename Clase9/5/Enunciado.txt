@@ -1,0 +1,5 @@
+1) Crear un usuario que acceda con nombre 'encargado' y clave 'qwerty123' sólo a la
+base 'empresa' y tenga permisos de lectura/escritura.
+2) Acceder con ese usuario y listar de la colección clientes sólo los nombres de los
+mismos.
+3) Verificar que no pueda acceder si sus credenciales no corresponden.

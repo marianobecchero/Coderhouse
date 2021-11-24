@@ -27,6 +27,7 @@ io.on('connection', socket => {
     const servidorProductos = async() =>{
         //Carga inicial de productos
         const productos = []
+        await sqlProductos.crearTablaProductos()
         const registros = await sqlProductos.listarTodos()
         for (const registro of registros){
             const producto = {
@@ -56,7 +57,7 @@ io.on('connection', socket => {
     const servidorMensajes = async() => {
         //carga inicial de mensajes
         const mensajes = []
-        sqlMensajes.crearTablaMensajes()
+        await sqlMensajes.crearTablaMensajes()
         const registros = await sqlMensajes.listarTodos()
         for (const registro of registros){
             const mensaje = {
@@ -78,16 +79,6 @@ io.on('connection', socket => {
             insertarMensaje()
             io.sockets.emit('mensajes', mensajes);
         })
-
-
-
-
-        /*socket.on('nuevoMensaje', mensaje => {
-            saveMensaje(mensaje)
-        
-            const allMessages = getMensajes();
-            io.sockets.emit('mensajes', allMessages)
-        })*/
     }
     servidorMensajes()
     

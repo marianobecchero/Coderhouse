@@ -1,0 +1,23 @@
+A continuación se muestra un enunciado para trabajar con bases de datos SQL:
+1) Crear una base de datos llamada 'mibase'
+2) Crear una tabla dentro de esa base con el nombre 'usuarios' que contenga los siguientes campos:
+- 'nombre' del tipo varchar no nulo
+- 'apellido' del tipo varchar no nulo
+- 'edad' del tipo entero sin signo
+- 'email' del tipo varchar no nulo
+- 'id' clave primaria autoincremental no nula
+3) Insertar estos 3 usuarios en esa tabla
+- Juan Perez edad 23 jp@gmail.com
+- Pedro Mei edad 21 pm@gmail.com
+- Juana Suarez edad 25 js@gmail.com
+4) Listar las tablas existentes
+5) Listar los usuarios agregados
+En base al enunciado:
+1) Conformar las operaciones de consulta apropiadas para realizar los mismos
+procedimientos utilizando un cliente CLI de MongoDB (mongo/mongosh).
+2) Crear una conexión local hacia el motor de base de datos MongoDB mediante el cliente
+Compass
+3) Con Compass acceder y visualizar la base, colecciones y documentos creados.
+Notas:
+El campo id lo crea automáticamente el motor de base de datos MongoDB y se llama _id
+almacenando un ObjectID.
