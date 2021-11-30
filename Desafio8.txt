@@ -1,0 +1,211 @@
+> mongod
+
+> show dbs
+admin      0.000GB
+config     0.000GB
+ecommerce  0.000GB
+local      0.000GB
+
+> use ecommerce
+switched to db ecommerce
+
+> db
+ecommerce
+
+> db.mensajes.insertMany([
+... {email: 'marianobecchero@gmail.com', mensaje: 'Muy buen producto'},
+... {email: 'manainformaticaticino@gmail.com', mensaje: 'Recomendado'},
+... {email: 'mb@gmail.com', mensaje: 'Super exitoso'},
+... {email: 'usd@gmail.com', mensaje: 'Compralo'},
+... {email: 'dfds@gmail.com', mensaje: 'Fue muy util'},
+... {email: 'uihi@gmail.com', mensaje: 'Me encanto'},
+... {email: 'iooiu@gmail.com', mensaje: 'Es lo peor'},
+... {email: 'dsf@gmail.com', mensaje: 'No sirve'},
+... {email: 'dsfa@gmail.com', mensaje: 'Es lo mas'},
+... {email: 'oi@gmail.com', mensaje: 'Mas o menos'}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("619bd94325698155d7993ad7"),
+                ObjectId("619bd94325698155d7993ad8"),
+                ObjectId("619bd94325698155d7993ad9"),
+                ObjectId("619bd94325698155d7993ada"),
+                ObjectId("619bd94325698155d7993adb"),
+                ObjectId("619bd94325698155d7993adc"),
+                ObjectId("619bd94325698155d7993add"),
+                ObjectId("619bd94325698155d7993ade")
+        ]
+}
+
+> db.productos.insertMany([
+... {title: 'Mesa', price:120},
+... {title: 'Silla', price: 580},
+... {title: 'Sillon', price: 900},
+... {title: 'TV', price: 1280},
+... {tilte: 'Escritorio', price: 1700},
+... {title: 'PC', price: 2300},
+... {title: 'Moto', price: 2860},
+... {title: 'Auto', price: 3350},
+... {title: 'Avion', price: 4320},
+... {title: 'Cohete', price: 4990}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("619bdb0988fd9c75afea2bec"),
+                ObjectId("619bdb0988fd9c75afea2bed"),
+                ObjectId("619bdb0988fd9c75afea2bee"),
+                ObjectId("619bdb0988fd9c75afea2bef"),
+                ObjectId("619bdb0988fd9c75afea2bf0"),
+                ObjectId("619bdb0988fd9c75afea2bf1"),
+                ObjectId("619bdb0988fd9c75afea2bf2"),
+                ObjectId("619bdb0988fd9c75afea2bf3"),
+                ObjectId("619bdb0988fd9c75afea2bf4"),
+                ObjectId("619bdb0988fd9c75afea2bf5")
+        ]
+}
+
+> db.mensajes.find()
+{ "_id" : ObjectId("619bd81825698155d7993ad5"), "email" : "marianobecchero@gmail
+.com", "mensaje" : "Muy buen producto" }
+{ "_id" : ObjectId("619bd81825698155d7993ad6"), "email" : "manainformaticaticino
+@gmail.com", "mensaje" : "Recomendado" }
+{ "_id" : ObjectId("619bd94325698155d7993ad7"), "email" : "mb@gmail.com", "mensa
+je" : "Super exitoso" }
+{ "_id" : ObjectId("619bd94325698155d7993ad8"), "email" : "usd@gmail.com", "mens
+aje" : "Compralo" }
+{ "_id" : ObjectId("619bd94325698155d7993ad9"), "email" : "dfds@gmail.com", "men
+saje" : "Fue muy util" }
+{ "_id" : ObjectId("619bd94325698155d7993ada"), "email" : "uihi@gmail.com", "men
+saje" : "Me encanto" }
+{ "_id" : ObjectId("619bd94325698155d7993adb"), "email" : "iooiu@gmail.com", "me
+nsaje" : "Es lo peor" }
+{ "_id" : ObjectId("619bd94325698155d7993adc"), "email" : "dsf@gmail.com", "mens
+aje" : "No sirve" }
+{ "_id" : ObjectId("619bd94325698155d7993add"), "email" : "dsfa@gmail.com", "men
+saje" : "Es lo mas" }
+{ "_id" : ObjectId("619bd94325698155d7993ade"), "email" : "oi@gmail.com", "mensa
+je" : "Mas o menos" }
+
+> db.productos.find()
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bec"), "title" : "Mesa", "price" : 120
+}
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bed"), "title" : "Silla", "price" : 580
+ }
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bee"), "title" : "Sillon", "price" : 90
+0 }
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bef"), "title" : "TV", "price" : 1280 }
+
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf0"), "tilte" : "Escritorio", "price"
+: 1700 }
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf1"), "title" : "PC", "price" : 2300 }
+
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf2"), "title" : "Moto", "price" : 2860
+ }
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf3"), "title" : "Auto", "price" : 3350
+ }
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf4"), "title" : "Avion", "price" : 432
+0 }
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf5"), "title" : "Cohete", "price" : 49
+90 }
+
+> db.mensajes.countDocuments()
+2021-11-22T15:03:05.055-0300 E  QUERY    [js] uncaught exception: Error: command
+ failed: {
+        "ok" : 0,
+        "errmsg" : "the match filter must be an expression in an object",
+        "code" : 15959,
+        "codeName" : "Location15959"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:18:14
+_assertCommandWorked@src/mongo/shell/assert.js:604:17
+assert.commandWorked@src/mongo/shell/assert.js:694:16
+DB.prototype._runAggregate@src/mongo/shell/db.js:266:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1024:12
+DBCollection.prototype.countDocuments@src/mongo/shell/collection.js:1448:17
+@(shell):1:1
+
+> db.productos.countDocuments()
+2021-11-27T14:27:54.170-0300 E  QUERY    [js] uncaught exception: Error: command
+ failed: {
+        "ok" : 0,
+        "errmsg" : "the match filter must be an expression in an object",
+        "code" : 15959,
+        "codeName" : "Location15959"
+} : aggregate failed :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+doassert@src/mongo/shell/assert.js:18:14
+_assertCommandWorked@src/mongo/shell/assert.js:604:17
+assert.commandWorked@src/mongo/shell/assert.js:694:16
+DB.prototype._runAggregate@src/mongo/shell/db.js:266:5
+DBCollection.prototype.aggregate@src/mongo/shell/collection.js:1024:12
+DBCollection.prototype.countDocuments@src/mongo/shell/collection.js:1448:17
+@(shell):1:1
+>
+
+> db.productos.insertOne({title: 'Bicicleta', price: 1100})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("619bdd1488fd9c75afea2bf6")
+}
+
+> db.productos.find({'price': {$lt: 1000}})
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bec"), "title" : "Mesa", "price" : 120
+}
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bed"), "title" : "Silla", "price" : 580
+ }
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bee"), "title" : "Sillon", "price" : 90
+0 }
+
+> db.productos.find({$and: [{'price': {$gte: 1000}}, {'price': {$lte: 3000}}]})
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bef"), "title" : "TV", "price" : 1280 }
+
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf0"), "tilte" : "Escritorio", "price"
+: 1700 }
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf1"), "title" : "PC", "price" : 2300 }
+
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf2"), "title" : "Moto", "price" : 2860
+ }
+{ "_id" : ObjectId("619bdd1488fd9c75afea2bf6"), "title" : "Bicicleta", "price" :
+ 1100 }
+
+> db.productos.find({'price': {$gt: 3000}})
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf3"), "title" : "Auto", "price" : 3350
+ }
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf4"), "title" : "Avion", "price" : 432
+0 }
+{ "_id" : ObjectId("619bdb0988fd9c75afea2bf5"), "title" : "Cohete", "price" : 49
+90 }
+
+> db.productos.find({}, {'title': 1, '_id': 0}).sort({price: 1}).skip(2).limit(1
+)
+{ "title" : "Sillon" }
+
+> db.productos.updateMany({}, {$set: {stock: 100}})
+{ "acknowledged" : true, "matchedCount" : 11, "modifiedCount" : 11 }
+
+> db.productos.updateMany({price: {$gt: 4000}}, {$set: {stock: 0}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+
+> db.productos.deleteMany({price: {$lt: 1000}})
+{ "acknowledged" : true, "deletedCount" : 3 }
+
+> db.createUser({user: 'pepe', pwd: 'asd456', roles: [{role: 'read', db: 'ecomme
+rce'}]})
+Successfully added user: {
+        "user" : "pepe",
+        "roles" : [
+                {
+                        "role" : "read",
+                        "db" : "ecommerce"
+                }
+        ]
+}
+
+> use ecommerce
+switched to db ecommerce
+> db.productos.insertOne({title: 'Pendrive'})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("61a269f627da4a26626f9de9")
+}
