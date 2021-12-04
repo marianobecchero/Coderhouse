@@ -17,8 +17,19 @@ productosRouter.get('/', async (req, res) => {
 
 productosRouter.get('/:id', async (req, res) => {
     const execute = async() => {
-        const producto = await productosDao.getById(req.params.id);
-        res.json(producto)
+        const id = req.params.id
+
+        if (isNaN(id)){
+            res.json({ Error: 'Parámetro erróneo' }) 
+        } else {
+            const producto = await productosDao.getById(id);
+        
+            if (producto == null){
+                res.json({ Error: `No se encontró el producto con id ${id}`})
+            } else {
+                res.json(producto)
+            }
+        }
     }
     execute()
 })
@@ -27,7 +38,7 @@ productosRouter.post('/', async (req, res) => {
     const execute = async() => {
         if (esAdministrador == true){
             const producto = await productosDao.save(req.body);
-            res.json({Correcto: 'El producto se agregó correctamente'})
+            res.json(producto)
         } else {
             res.json({Error: 'No tiene permisos para realizar este método'})
         }  
@@ -38,9 +49,20 @@ productosRouter.post('/', async (req, res) => {
 productosRouter.put('/:id', async (req, res) => {
     const execute = async() => {
         if (esAdministrador == true){
-            const object = {...req.body, id: req.params.id}
-            const producto = await productosDao.update(object);
-            res.json(producto)
+            const idProducto = req.params.id
+
+            if(isNaN(idProducto)){
+                res.json({ Error: 'Parámetro erróneo' })
+            } else {
+                const producto = await productosDao.getById(idProducto)
+                if (producto == null){
+                    res.json({ Error: `No se encontró el producto con id ${idProducto}` }) 
+                } else {
+                    const productoModificar = {...req.body, id: req.params.id, timestamp: producto.timestamp}
+                    const modificar = await productosDao.update(productoModificar)
+                    res.json(modificar)
+                }
+            }
         } else {
             res.json({Error: 'No tiene permisos para realizar este método'})
         }

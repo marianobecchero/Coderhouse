@@ -10,16 +10,16 @@ const execute = async() => {
             productosDao = new ProductosDaoArchivo(config.fileSystem.path)
             break
         case 'firebase':
-            const { default: ProductosDaoFirebase } = await import('./ProductosDaoFirebase.js')
+            const { ProductosDaoFirebase } = require('./ProductosDaoFirebase.js')
             productosDao = new ProductosDaoFirebase()
             break
         case 'mongodb':
-            const { default: ProductosDaoMongoDb } = await import('./ProductosDaoMongoDb.js')
-            productosDao = new ProductosDaoMongoDb()
+            const { ProductosDaoMongoDB } = require('./ProductosDaoMongoDB.js')
+            productosDao = new ProductosDaoMongoDB()
             break
         default:
-            const { default: ProductosDaoMem } = await import('./ProductosDaoMem.js')
-            productosDao = new ProductosDaoMem()
+            const { ProductosDaoMemoria } = require('./ProductosDaoMemoria.js')
+            productosDao = new ProductosDaoMemoria()
             break
     }
 }

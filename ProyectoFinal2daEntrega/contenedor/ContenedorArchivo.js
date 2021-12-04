@@ -1,6 +1,7 @@
 const { json } = require('express');
 const fs = require ('fs');
 
+
 class ContenedorArchivo {
 
     constructor(nombreArchivo) {
@@ -25,7 +26,7 @@ class ContenedorArchivo {
         if (isNaN(id)){
             return {Error: 'Parámetro erróneo'}
         } else if (object == undefined){
-            return {Error: `No se encontró el producto con id ${id}`}
+            return {Error: `No se encontró el objeto con id ${id}`}
             //throw new Error(`Error: no se encontró el objeto con id ${id}`)
         } else {
             return object
@@ -49,9 +50,10 @@ class ContenedorArchivo {
 
         try {
             await fs.promises.writeFile(this.nombreArchivo, JSON.stringify(arrObjects, null, 2))
-            return newObject
+            return { Correcto: 'El objeto se agregó correctamente' }
         } catch (error) {
-            throw new Error(`Error al guardar: ${error}`)
+            //throw new Error(`Error al guardar: ${error}`)
+            return { Error: `No se pudo guardar el objeto: ${error}`}
         }
     }
 
@@ -61,16 +63,16 @@ class ContenedorArchivo {
         if (isNaN(obj.id)){
             return { Error: 'Parámetro erróneo'}
         } else if (index == -1) {
-            return { Error: `No se encontró el producto con id ${id}` }
+            return { Error: `No se encontró el objeto con id ${obj.id}` }
             //throw new Error(`Error al actualizar: no se encontró el objeto con id ${id}`)
         } else {
-            arrObjects[ index ] = {...obj, timestamp: arrObjects[index].timestamp}
+            arrObjects[ index ] = {...obj, id: arrObjects[index].id, timestamp: arrObjects[index].timestamp}
         }
         try {
             await fs.promises.writeFile(this.nombreArchivo, JSON.stringify(arrObjects, null, 2))
-            return { Correcto: 'El producto se modificó correctamente' }
+            return { Correcto: 'El objeto se modificó correctamente' }
         } catch (error) {
-            throw new Error(`Error al actualizar: ${error}`)
+            return { Error: `No se pudo actualizar el objeto: ${error}`}
         }
     }
 
@@ -81,7 +83,7 @@ class ContenedorArchivo {
         if (isNaN(id)){
             return { Error: 'Parámetro erróneo' }
         } else if (index == -1) {
-            return { Error: `No se encontró el producto con id ${id}`}
+            return { Error: `No se encontró el objeto con id ${id}`}
             //throw new Error(`Error al borrar: no se encontró el objeto con id ${id}`)
         } else {
             const deleted = arrObjects.splice(index, 1)[ 0 ]
@@ -89,7 +91,7 @@ class ContenedorArchivo {
 
         try {
             await fs.promises.writeFile(this.nombreArchivo, JSON.stringify(arrObjects, null, 2))
-            return { Correcto: 'El producto se eliminó correctamente' }
+            return { Correcto: 'El objeto se ha eliminado' }
         } catch (error) {
             throw new Error(`Error al borrar: ${error}`)
         }
@@ -99,7 +101,62 @@ class ContenedorArchivo {
         try {
             await fs.promises.writeFile(this.nombreArchivo, JSON.stringify([], null, 2))
         } catch (error) {
-            throw new Error(`Error al borrar todo: ${error}`)
+            return { Error: `No se pudo borrar el objeto: ${error}`}
+        }
+    }
+
+
+    addProductoCarrito = async (idCarrito, producto) => {
+        const arrObjects = await this.getAll();
+
+        const index = arrObjects.findIndex(obj => obj.id == idCarrito)
+
+        if (isNaN(idCarrito) || isNaN(producto.id)){
+            return { Error: 'Parámetro erróneo' }
+        }
+        if (index == -1){
+            return { Error: `No se encontró el carrito con id ${idCarrito}`}
+        } else {
+            const contenedorProductos = new ContenedorArchivo('./DB/productos.json')
+            const newObject = await contenedorProductos.getById(producto.id)
+            if (!newObject.hasOwnProperty('id')){
+                return { Error: `No se encontró el producto con id ${producto.id}` }
+            } else {
+                arrObjects[index].productos.push(newObject)
+            }
+        }
+
+        try {
+            await fs.promises.writeFile(this.nombreArchivo, JSON.stringify(arrObjects, null, 2));
+            return { Correcto: 'El producto se agregó al carrito' }
+        } catch (error) {
+            throw new Error ("No se pudo agregar el producto al carrito");
+        }
+    }
+
+    deleteProductoEnCarrito = async (idProducto, idCarrito) => {
+        const arrObjects = await this.getAll()
+        const object = arrObjects.find(obj => obj.id == idCarrito)
+        const indexObject = arrObjects.findIndex(obj => obj.id == idCarrito)
+
+        if (isNaN(idCarrito) || isNaN(idProducto)) {
+            return { Error: 'Parámetro erróneo'}
+        } else if (indexObject == -1){
+            return { Error: `No se encontró el carrito con id ${idCarrito}` }
+        } else {
+            const indexObjectDelete = object.productos.findIndex(obj => obj.id == idProducto)
+            if (indexObjectDelete == -1){
+                return { Error: `No se encontró el producto con id ${idProducto}` }
+            } else {
+                object.productos.splice(indexObjectDelete, 1)
+            }
+        }
+            
+        try {
+            await fs.promises.writeFile(this.nombreArchivo, JSON.stringify(arrObjects, null, 2));
+            return { Correcto: 'El producto se ha eliminado' }
+        } catch (error) {
+            throw new Error ("No se pudo eliminar el objeto");
         }
     }
 

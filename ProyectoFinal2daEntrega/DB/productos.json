@@ -1,12 +1,12 @@
 [
   {
-    "nombre": "Sillas",
+    "nombre": "Silla",
     "descripcion": "Tiene 4 patas",
     "precio": 500,
     "thumbnail": "https://cdn3.iconfinder.com/data/icons/delta/256/Chair.png",
     "codigo": "sila5612548",
     "stock": 4,
-    "id": "1",
+    "id": 1,
     "timestamp": "2021-11-30T20:34:17.373Z"
   },
   {
