@@ -22,15 +22,7 @@ class ContenedorArchivo {
     getById = async id => {
         const arrObjects = await this.getAll()
         const object = arrObjects.find(obj => obj.id == id)
-
-        if (isNaN(id)){
-            return {Error: 'Parámetro erróneo'}
-        } else if (object == undefined){
-            return {Error: `No se encontró el objeto con id ${id}`}
-            //throw new Error(`Error: no se encontró el objeto con id ${id}`)
-        } else {
-            return object
-        }
+        return object
     }
 
     save = async obj => {
@@ -60,14 +52,8 @@ class ContenedorArchivo {
     update = async obj => {
         const arrObjects = await this.getAll()
         const index = arrObjects.findIndex(o => o.id == obj.id)
-        if (isNaN(obj.id)){
-            return { Error: 'Parámetro erróneo'}
-        } else if (index == -1) {
-            return { Error: `No se encontró el objeto con id ${obj.id}` }
-            //throw new Error(`Error al actualizar: no se encontró el objeto con id ${id}`)
-        } else {
-            arrObjects[ index ] = {...obj, id: arrObjects[index].id, timestamp: arrObjects[index].timestamp}
-        }
+        arrObjects[ index ] = {...obj, id: arrObjects[index].id, timestamp: arrObjects[index].timestamp}
+
         try {
             await fs.promises.writeFile(this.nombreArchivo, JSON.stringify(arrObjects, null, 2))
             return { Correcto: 'El objeto se modificó correctamente' }
@@ -106,25 +92,10 @@ class ContenedorArchivo {
     }
 
 
-    addProductoCarrito = async (idCarrito, producto) => {
+    addProductoCarrito = async (obj) => {
         const arrObjects = await this.getAll();
-
-        const index = arrObjects.findIndex(obj => obj.id == idCarrito)
-
-        if (isNaN(idCarrito) || isNaN(producto.id)){
-            return { Error: 'Parámetro erróneo' }
-        }
-        if (index == -1){
-            return { Error: `No se encontró el carrito con id ${idCarrito}`}
-        } else {
-            const contenedorProductos = new ContenedorArchivo('./DB/productos.json')
-            const newObject = await contenedorProductos.getById(producto.id)
-            if (!newObject.hasOwnProperty('id')){
-                return { Error: `No se encontró el producto con id ${producto.id}` }
-            } else {
-                arrObjects[index].productos.push(newObject)
-            }
-        }
+        const index = arrObjects.findIndex(obj => obj.id == obj.id)
+        arrObjects[index] = { ...obj }
 
         try {
             await fs.promises.writeFile(this.nombreArchivo, JSON.stringify(arrObjects, null, 2));
@@ -134,23 +105,10 @@ class ContenedorArchivo {
         }
     }
 
-    deleteProductoEnCarrito = async (idProducto, idCarrito) => {
+    deleteProductoEnCarrito = async (obj) => {
         const arrObjects = await this.getAll()
-        const object = arrObjects.find(obj => obj.id == idCarrito)
-        const indexObject = arrObjects.findIndex(obj => obj.id == idCarrito)
-
-        if (isNaN(idCarrito) || isNaN(idProducto)) {
-            return { Error: 'Parámetro erróneo'}
-        } else if (indexObject == -1){
-            return { Error: `No se encontró el carrito con id ${idCarrito}` }
-        } else {
-            const indexObjectDelete = object.productos.findIndex(obj => obj.id == idProducto)
-            if (indexObjectDelete == -1){
-                return { Error: `No se encontró el producto con id ${idProducto}` }
-            } else {
-                object.productos.splice(indexObjectDelete, 1)
-            }
-        }
+        const indexObject = arrObjects.findIndex(o => o.id == obj.id)
+        arrObjects[indexObject] = obj
             
         try {
             await fs.promises.writeFile(this.nombreArchivo, JSON.stringify(arrObjects, null, 2));

@@ -39,7 +39,7 @@ carritosRouter.post('/', async (req, res) => {
 
 carritosRouter.post('/:id/productos', (req,res) => {
     const execute = async() => {
-        const idCarrito = parseInt(req.params.id)
+        const idCarrito = req.params.id
         const producto = req.body
 
         if (isNaN(idCarrito)){

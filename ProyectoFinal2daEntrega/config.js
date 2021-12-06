@@ -1,5 +1,5 @@
 // elegir tu persistencia acá
-const PERS = 'mongodb'
+const PERS = 'memo'
 
 const config = {
     PERS,
@@ -17,6 +17,7 @@ const config = {
         }
     },
     firebase: {
+        uri: 'DB/coderhouse-2d177-firebase-adminsdk-n6zja-982be2c8c7.json'
     }
 }
 

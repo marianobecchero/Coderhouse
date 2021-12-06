@@ -58,7 +58,7 @@ productosRouter.put('/:id', async (req, res) => {
                 if (producto == null){
                     res.json({ Error: `No se encontró el producto con id ${idProducto}` }) 
                 } else {
-                    const productoModificar = {...req.body, id: req.params.id, timestamp: producto.timestamp}
+                    const productoModificar = {...req.body, id: parseInt(idProducto), timestamp: producto.timestamp}
                     const modificar = await productosDao.update(productoModificar)
                     res.json(modificar)
                 }
