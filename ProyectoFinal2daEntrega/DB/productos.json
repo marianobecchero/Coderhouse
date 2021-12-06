@@ -1,22 +1,22 @@
 [
   {
-    "nombre": "Mesa",
+    "nombre": "Sillon",
     "descripcion": "Tiene 4 patas",
     "precio": 500,
-    "thumbnail": "https://www.iconfinder.com/icons/809102/desk_dining_interior_table_icon",
-    "codigo": "mesa5612548",
-    "stock": 5,
-    "id": 3,
-    "timestamp": "2021-11-30T20:34:51.716Z"
-  },
-  {
-    "nombre": "Heladera",
-    "descripcion": "Tiene 4 patas",
-    "precio": 500,
-    "thumbnail": "https://www.iconfinder.com/icons/809102/desk_dining_interior_table_icon",
-    "codigo": "mesa5612548",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/delta/256/Chair.png",
+    "codigo": "sila5612548",
     "stock": 5,
     "id": 4,
     "timestamp": "2021-12-06T01:24:16.062Z"
+  },
+  {
+    "nombre": "Silla",
+    "descripcion": "Tiene 4 patas",
+    "precio": 500,
+    "thumbnail": "https://www.iconfinder.com/icons/809102/desk_dining_interior_table_icon",
+    "codigo": "mesa5612548",
+    "stock": 5,
+    "id": 5,
+    "timestamp": "2021-12-06T11:19:24.318Z"
   }
 ]

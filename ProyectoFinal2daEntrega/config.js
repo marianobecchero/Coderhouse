@@ -1,5 +1,5 @@
 // elegir tu persistencia acá
-const PERS = 'memo'
+const PERS = 'firebase'
 
 const config = {
     PERS,
