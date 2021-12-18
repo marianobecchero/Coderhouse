@@ -1,15 +1,15 @@
 //import express from 'express'
 //import { personasRouter } from './routers/personasRouter.js'
 const express = require('express')
-const { productosRouter } = require('./router/ProductosRouter.js')
-const { carritosRouter } = require('./router/CarritosRouter.js')
+const { ProductosRouter } = require('./router/ProductosRouter.js')
+const { CarritosRouter } = require('./router/CarritosRouter.js')
 
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use('/api/productos', productosRouter)
-app.use('/api/carritos', carritosRouter)
+app.use('/api/productos', ProductosRouter)
+app.use('/api/carritos', CarritosRouter)
 
 app.all('*', (req, res) => {
     res.json({ error : -2, descripcion: `ruta '${req.url}' método ${req.method} no implementada`})

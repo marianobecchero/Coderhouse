@@ -47,7 +47,6 @@ formAgregarProducto.addEventListener('submit', e => {
   socket.on('mensajes', manejarEventoMensajes);
 
 async function manejarEventoMensajes(mensajes) {
-    //console.log(productos)
 
     // busco la plantilla del servidor
     const recursoRemoto = await fetch('views/mensajes.hbs')
