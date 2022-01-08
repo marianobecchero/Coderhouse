@@ -1,0 +1,11 @@
+{{#if messagesDenormalized.length}}
+<div class="table-responsive">
+        {{#each messagesDenormalized}}
+        <div>
+            <strong style="color:blue">{{this.email}}</strong> <a style="color:brown">{{this.fecha}}</a> <a style="color:green">{{this.mensaje}}</a>
+        </div>
+        {{/each}}
+</div>
+{{ else }}
+<h3 class="alert alert-warning">No hay mensajes</h3>
+{{/if}}
