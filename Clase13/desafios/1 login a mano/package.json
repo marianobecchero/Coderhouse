@@ -1,0 +1,19 @@
+{
+  "name": "ejemplo-session",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.2",
+    "express-handlebars": "^5.3.5",
+    "express-session": "^1.17.2"
+  }
+}

@@ -75,7 +75,9 @@ io.on('connection', socket => {
     const servidorMensajes = async() => {
         //carga inicial de mensajes
         const mensajes = await contenedorArchivo.getAll()
+        //console.log(mensajes)
         let normalizedMessages = await normalization(mensajes);
+        //console.log(normalizedMessages)
         
         //console.log('Longitud objeto original: ', JSON.stringify(mensajes).length)
         //console.log('Longitud objeto normalizado: ', JSON.stringify(normalizedMessages).length)
