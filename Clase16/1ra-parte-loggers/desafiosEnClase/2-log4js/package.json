@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "name": "ejemplo-log4j",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^4.17.2",
+    "log4js": "^6.4.1"
+  }
+}

@@ -1,0 +1,52 @@
+[2022-01-29T14:07:58.226] [WARN] default - Ruta GET /dsfdsf no implementada
+[2022-01-29T14:07:58.229] [INFO] default - Ruta GET /dsfdsf no implementada
+[2022-01-29T14:09:58.229] [WARN] default - Ruta GET /dsfdsf no implementada
+[2022-01-29T14:09:58.231] [INFO] default - Ruta GET /dsfdsf no implementada
+[2022-01-29T14:13:41.996] [INFO] default - Ruta GET /?cant=10 OK
+[2022-01-29T14:18:00.259] [INFO] default - Ruta GET /login OK
+[2022-01-29T14:18:00.335] [WARN] default - Ruta GET /public/css/styles.css no implementada
+[2022-01-29T14:18:00.349] [INFO] default - Ruta GET /public/css/styles.css no implementada
+[2022-01-29T14:18:45.113] [INFO] default - Ruta GET /login OK
+[2022-01-29T14:18:45.180] [WARN] default - Ruta GET /public/css/styles.css no implementada
+[2022-01-29T14:18:45.186] [INFO] default - Ruta GET /public/css/styles.css no implementada
+[2022-01-29T14:19:00.073] [INFO] default - Ruta GET /register OK
+[2022-01-29T14:19:00.150] [WARN] default - Ruta GET /public/css/styles.css no implementada
+[2022-01-29T14:19:00.152] [INFO] default - Ruta GET /public/css/styles.css no implementada
+[2022-01-29T14:19:40.644] [INFO] default - Ruta GET /register OK
+[2022-01-29T14:19:40.692] [WARN] default - Ruta GET /public/css/styles.css no implementada
+[2022-01-29T14:20:06.222] [INFO] default - Ruta GET /login OK
+[2022-01-29T14:20:06.292] [WARN] default - Ruta GET /public/css/styles.css no implementada
+[2022-01-29T14:21:33.642] [WARN] default - Ruta GET /public/css/styles.css no implementada
+[2022-01-29T14:48:20.490] [WARN] default - Ruta GET /dsfdsf no implementada
+[2022-01-29T14:48:20.493] [WARN] default - Ruta GET /jkhdkjfhdksjhf no implementada
+[2022-01-29T14:48:20.496] [WARN] default - Ruta GET /ddfdsdfsdf no implementada
+[2022-01-29T14:48:25.742] [WARN] default - Ruta GET /sad no implementada
+[2022-01-29T14:48:25.749] [WARN] default - Ruta GET /dgdfgd no implementada
+[2022-01-29T14:48:25.753] [WARN] default - Ruta GET /ddsfdsf no implementada
+[2022-01-29T14:50:35.167] [WARN] default - Ruta GET /dfgd no implementada
+[2022-01-29T14:50:40.867] [WARN] default - Ruta GET /public/css/styles.css no implementada
+[2022-01-29T14:52:31.845] [WARN] default - Ruta GET /sad no implementada
+[2022-01-29T14:52:54.492] [WARN] default - Ruta GET /dsfdsf no implementada
+[2022-01-29T14:52:54.499] [WARN] default - Ruta GET /jkhdkjfhdksjhf no implementada
+[2022-01-29T14:52:54.507] [WARN] default - Ruta GET /sad no implementada
+[2022-01-29T14:52:55.406] [WARN] default - Ruta GET /ddfdsdfsdf no implementada
+[2022-01-29T14:52:55.413] [WARN] default - Ruta GET /ddsfdsf no implementada
+[2022-01-29T14:52:55.420] [WARN] default - Ruta GET /dgdfgd no implementada
+[2022-01-29T14:54:46.570] [INFO] default - Ruta GET / OK
+[2022-01-29T14:55:55.742] [INFO] default - Ruta GET /info OK
+[2022-01-29T14:57:24.032] [INFO] default - Ruta GET /login OK
+[2022-01-29T14:57:34.010] [INFO] default - Ruta GET /datos OK
+[2022-01-29T14:57:57.496] [INFO] default - Ruta GET /logout OK
+[2022-01-29T14:57:57.504] [INFO] default - Ruta GET /login OK
+[2022-01-29T14:57:57.538] [INFO] default - Ruta GET /login OK
+[2022-01-29T14:58:02.366] [INFO] default - Ruta GET /register OK
+[2022-01-29T14:58:42.498] [INFO] default - Ruta GET /login OK
+[2022-01-29T14:58:47.794] [INFO] default - Ruta GET /faillogin OK
+[2022-01-29T14:59:43.705] [INFO] default - Ruta GET /login OK
+[2022-01-29T14:59:48.620] [WARN] default - Ruta GET /faillogin OK
+[2022-01-29T15:01:36.295] [INFO] default - Ruta GET /login OK
+[2022-01-29T15:01:42.790] [INFO] default - Ruta GET /datos OK
+[2022-01-29T17:49:41.855] [INFO] default - Ruta GET /login OK
+[2022-01-29T17:49:42.011] [WARN] default - Ruta GET /public/css/styles.css no implementada
+[2022-01-29T18:12:46.875] [INFO] default - Ruta GET /login OK
+[2022-01-29T18:12:54.420] [INFO] default - Ruta GET /datos OK
