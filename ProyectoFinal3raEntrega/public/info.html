@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informacion de la cuenta</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+        integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+    <!-- <div class="container text-center my-3">
+        <div class="jumbotron" style="background-color: salmon;color: white;">
+            <h1>OK</h1>
+        </div>
+    </div> -->
+
+    
+
+    <div class="container text-center my-3">
+      <nav class="navbar navbar-expand-lg text-white bg-dark">
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link disabled" id="usuario"></a>
+            </li>
+          </ul>
+          
+          <button class="btn btn-outline-success my-2 my-sm-0" onclick="location.href = '/logout'">Logout</button>
+          
+        </div>
+      </nav>
+      
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/datos">Ingresar Productos |</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/modificarProductos">Modificar Productos |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/eliminarProductos">Eliminar Productos |</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/carrito">Carrito |</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/info">Info Cuenta |</a>
+            </li>
+          
+          </ul>
+          
+        </div>
+      </nav>
+    </div>
+
+    <div class="container mt-3">
+      <div class="jumbotron">
+          <h1>Informacion de la cuenta</h1>
+          
+          <div id="info"></div>
+          <br>
+
+          <h1>Cargar foto</h1>
+
+          <img id="photo" width="85" height="90">
+          <br>
+
+          <form action="/uploadfile" enctype="multipart/form-data" method="POST">
+              <input type="file" name="myFile" />
+              <input type="submit" value="Subir Archivo" />
+          </form>
+
+
+      </div>
+  </div>
+    
+    
+    <script src="js/info.js"></script>
+
+</body>
+
+</html>

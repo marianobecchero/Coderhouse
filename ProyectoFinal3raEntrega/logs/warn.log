@@ -1,0 +1,6 @@
+[2022-02-12T00:54:15.650] [ERROR] default - ERROR: No se pudo conectar a la base de datos
+[2022-02-12T00:55:42.914] [ERROR] default - ERROR: No se pudo conectar a la base de datos
+[2022-02-12T00:57:14.373] [ERROR] default - ERROR: No se pudo conectar a la base de datos
+[2022-02-12T00:59:13.959] [ERROR] default - ERROR: No se pudo conectar a la base de datos
+[2022-02-12T17:24:13.829] [ERROR] default - ERROR: No se pudo obtener el objeto MongooseServerSelectionError: connection <monitor> to 34.200.89.188:27017 closed
+[2022-02-12T18:10:50.798] [ERROR] default - ERROR: No se pudo guardar el objeto: ValidationError: precio: Cast to Number failed for value "30,5" (type string) at path "precio"

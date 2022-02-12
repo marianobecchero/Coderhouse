@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+        integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+    <!-- <div class="container text-center my-3">
+        <div class="jumbotron" style="background-color: salmon;color: white;">
+            <h1>OK</h1>
+        </div>
+    </div> -->
+
+    
+
+    <div class="container text-center my-3">
+      <nav class="navbar navbar-expand-lg text-white bg-dark">
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link disabled" id="usuario"></a>
+            </li>
+          </ul>
+          
+          <button class="btn btn-outline-success my-2 my-sm-0" onclick="location.href = '/logout'">Logout</button>
+          
+        </div>
+      </nav>
+      
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/datos">Ingresar Productos |</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/modificarProductos">Modificar Productos |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/eliminarProductos">Eliminar Productos |</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/carrito">Carrito |</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/info">Info Cuenta |</a>
+            </li>
+          
+          </ul>
+          
+        </div>
+      </nav>
+    </div>
+
+    <div class="container mt-3">
+        <div class="jumbotron">
+            <h1>Carrito</h1>
+            <br>
+            <div id="carrito"></div>
+            <br>
+            <form id="formEnviarPedido">
+                <div class="form-group">
+                    <button class="btn btn-success mt-3">Enviar pedido</button>
+                </div>
+            </form>    
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <div class="jumbotron">
+            <h1>Agregar producto</h1>
+            <br>
+  
+            <form id="formProducto">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input id="txtId" class="form-control" type="number" name="id" required>
+                </div>
+  
+                <button class="btn btn-success mt-3">Enviar</button>
+              
+              </form>
+        </div>
+      </div>
+
+      <div class="container mt-3">
+        <div class="jumbotron">
+            <h1>Eliminar producto</h1>
+            <br>
+  
+            <form id="formEliminarProducto">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input id="txtId" class="form-control" type="number" name="id" required>
+                </div>
+  
+                <button class="btn btn-success mt-3">Enviar</button>
+              
+              </form>
+        </div>
+      </div>
+
+
+      <div class="container mt-3">
+        <div class="jumbotron">
+            <h1>Vaciar carrito</h1>
+            <br>
+  
+            <form id="formVaciarCarrito">
+  
+                <button class="btn btn-success mt-3">Vaciar carrito</button>
+              
+              </form>
+        </div>
+      </div>
+
+    <div class="container mt-3">
+        <div class="jumbotron">
+            <h1>Listado de Productos</h1>
+            <br>
+            <div id="productos"></div>
+        </div>
+    </div>
+
+    
+    
+    <script src="js/carrito.js"></script>
+
+</body>
+
+</html>

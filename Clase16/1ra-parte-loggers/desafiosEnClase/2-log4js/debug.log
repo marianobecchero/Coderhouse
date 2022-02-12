@@ -1,3 +1,5 @@
 [2022-01-29T13:08:06.508] [INFO] default - Servidor express escuchando en el puerto 8080
 [2022-01-29T13:08:14.077] [ERROR] default - Parámetros incorrectos para la suma
 [2022-01-29T13:08:19.667] [INFO] default - Parámetros 20 y 30 correctos para la suma
+[2022-02-12T18:02:15.500] [INFO] default - Servidor express escuchando en el puerto 8080
+[2022-02-12T18:02:20.092] [WARN] default - Ruta GET / no implementada
