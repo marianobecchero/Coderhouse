@@ -9,6 +9,7 @@ const multer = require('multer')
 const { createTransport } = require('nodemailer')
 require('dotenv').config()
 const fs = require('fs')
+const { logger } = require('../logger.js')
 
 const sesionesRouter = Router()
 
@@ -327,7 +328,7 @@ const sendEmail = async(user) => {
     const info = await transporter.sendMail(mailOptions)
     //console.log(info)
   } catch (error) {
-    console.log(error)
+    logger.error('ERROR: No se pudo enviar el email')
   }
 }
 

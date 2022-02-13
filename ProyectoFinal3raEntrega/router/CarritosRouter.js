@@ -3,8 +3,10 @@
 const { Router } = require('express')
 const { carritosDao } = require('../dao/carritos/index.js')
 const { productosDao } = require('../dao/productos/index.js')
+const { twilioDao } = require('../dao/twilio/index.js')
 const { createTransport } = require('nodemailer')
 const twilio = require('twilio')
+const { logger } = require('../logger.js')
 
 const carritosRouter = Router()
 
@@ -155,7 +157,7 @@ const transporter = createTransport({
       const info = await transporter.sendMail(mailOptions)
       //console.log(info)
     } catch (error) {
-      console.log(error)
+      logger.error('ERROR: No se pudo enviar el email')
     }
   }
   
@@ -163,8 +165,8 @@ const transporter = createTransport({
 
 //WHATSAPP Y SMS
 
-  const accountSid = 'ACa0c72e60267aa1ea3bb9b6a2731862e7'
-const authToken = '49bd315f31cf083f26be486a86911ff1'
+const accountSid = "ACa0c72e60267aa1ea3bb9b6a2731862e7"
+const authToken = "bdc4ae49d9211850e6e16097d89d58d3"
 
 const client = twilio(accountSid, authToken)
 
@@ -176,10 +178,12 @@ const sendWhatsapp = async(usuario, productos) => {
             to: `whatsapp:${process.env.WHATSAPP}`
         }
 
+        const client = twilio(accountSid, authToken)
+
         const message = await client.messages.create(options)
         //console.log(message)
     } catch (error) {
-        console.log(error)
+        logger.error('ERROR: No se pudo enviar el whatsapp')
     }
 }
 
@@ -194,7 +198,7 @@ const sendSMS = async(usuario) => {
         const message = await client.messages.create(options)
         //console.log(message)
     } catch (error) {
-        console.log(error)
+        logger.error('ERROR: No se pudo enviar el SMS')
     }
 }
 

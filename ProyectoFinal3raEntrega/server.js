@@ -5,6 +5,7 @@ const { sesionesRouter } = require('./router/SesionesRouter.js')
 require('dotenv').config()
 const cluster = require('cluster')
 const { logger } = require('./logger.js')
+const twilio = require('twilio')
 
 const app = express()
 
@@ -21,7 +22,7 @@ app.use('/', sesionesRouter)
 
 const numCPUs = require('os').cpus().length
 
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 
 function serverFork(){
     const server = app.listen(PORT, () => {
