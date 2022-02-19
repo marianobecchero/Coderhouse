@@ -3,7 +3,6 @@
 const { Router } = require('express')
 const { carritosDao } = require('../dao/carritos/index.js')
 const { productosDao } = require('../dao/productos/index.js')
-const { twilioDao } = require('../dao/twilio/index.js')
 const { createTransport } = require('nodemailer')
 const twilio = require('twilio')
 const { logger } = require('../logger.js')
