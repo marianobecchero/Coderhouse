@@ -9,15 +9,18 @@ const { SesionesRouter } = require('./router/SesionesRouter.js')
 const { InfoRouter } = require('./router/InfoRouter.js')
 const { RandomsRouter } = require('./router/RandomsRouter.js')
 const { FakerRouter } = require('./router/FakerRouter.js')
+const { SocketRouter } = require('./router/SocketRouter.js')
 const { engine } = require('express-handlebars')
-const { MensajesDao } = require('./negocio_dao/mensajes/index')
-const { ProductosDao } = require('./negocio_dao/productos/index')
+//const { MensajesDao } = require('./negocio_dao/mensajes/index')
+//const { ProductosDao } = require('./negocio_dao/productos/index')
 const parseArgs = require('minimist')
 const cluster = require('cluster')
 
 const app = express();
 const httpServer = new HTTPServer(app)
 const io = new SocketServer(httpServer)
+const socketRouter = new SocketRouter(io);
+socketRouter.startRouter();
 
 const sqlProductos = new ClienteSql(optionsMySQL, 'productos')
 //1 const contenedorArchivo = new ContenedorArchivo("./DB/mensajes.json");
@@ -69,68 +72,67 @@ const commandLineArgs = process.argv.slice(2);
 
 const { puerto, modo, _ } = parseArgs(commandLineArgs, options);
 
-io.on('connection', socket => {
-    console.log('Nuevo cliente conectado')
+// io.on('connection', socket => {
     
-    const servidorProductos = async() =>{
-        //Carga inicial de productos
-        //const productos = []
-        //await sqlProductos.crearTablaProductos()
-        //const registros = await sqlProductos.listarTodos()
-        const productos = await ProductosDao.getAll()
-        /*console.log(productos)
-        for (const registro of productos){
-            const producto = {
-                id: registro['id'],
-                title: registro['title'],
-                price: registro['price'],
-                thumbnail: registro['thumbnail']
-            }
-            productos.push(producto)
-        }*/
-        socket.emit('productos', productos)
+//     const servidorProductos = async() =>{
+//         //Carga inicial de productos
+//         //const productos = []
+//         //await sqlProductos.crearTablaProductos()
+//         //const registros = await sqlProductos.listarTodos()
+//         const productos = await ProductosDao.getAll()
+//         /*console.log(productos)
+//         for (const registro of productos){
+//             const producto = {
+//                 id: registro['id'],
+//                 title: registro['title'],
+//                 price: registro['price'],
+//                 thumbnail: registro['thumbnail']
+//             }
+//             productos.push(producto)
+//         }*/
+//         socket.emit('productos', productos)
 
-        // agregar producto
-        socket.on('add', producto => {
-            //console.log(producto)
-            productos.push(producto)
-            const insertarProducto = async() => {
-                //await sqlProductos.insertar(producto)
-                await ProductosDao.save(producto)
-            }
-            insertarProducto()
-            io.sockets.emit('productos', productos);
-        })
+//         // agregar producto
+//         socket.on('add', producto => {
+//             //console.log(producto)
+//             productos.push(producto)
+//             const insertarProducto = async() => {
+//                 //await sqlProductos.insertar(producto)
+//                 await ProductosDao.save(producto)
+//             }
+//             insertarProducto()
+//             io.sockets.emit('productos', productos);
+//         })
 
-    }
-    servidorProductos()
+//     }
+//     servidorProductos()
 
-    const servidorMensajes = async() => {
-        //carga inicial de mensajes
-        const mensajes = await MensajesDao.getAll()
-        //3 let normalizedMessages = await normalization(mensajes);
+//     const servidorMensajes = async() => {
+//         //carga inicial de mensajes
+//         const mensajes = await MensajesDao.getAll()
+//         //3 let normalizedMessages = await normalization(mensajes);
         
-        //console.log('Longitud objeto original: ', JSON.stringify(mensajes).length)
-        //console.log('Longitud objeto normalizado: ', JSON.stringify(normalizedMessages).length)
-        //4 socket.emit('mensajes', normalizedMessages)
-        socket.emit('mensajes', mensajes)
+//         //console.log('Longitud objeto original: ', JSON.stringify(mensajes).length)
+//         //console.log('Longitud objeto normalizado: ', JSON.stringify(normalizedMessages).length)
+//         //4 socket.emit('mensajes', normalizedMessages)
+//         socket.emit('mensajes', mensajes)
 
-        //agregar mensajes
-        socket.on('nuevoMensaje', mensaje => {
-            mensajes.push(mensaje)
-            const insertarMensaje = async() => {
-                await MensajesDao.save(mensaje)
-            }
-            insertarMensaje()
-            //5 io.sockets.emit('mensajes', normalizedMessages);
-            io.sockets.emit('mensajes', mensajes);
-        })
+//         //agregar mensajes
+//         socket.on('nuevoMensaje', mensaje => {
+//             mensajes.push(mensaje)
+//             const insertarMensaje = async() => {
+//                 await MensajesDao.save(mensaje)
+//             }
+//             insertarMensaje()
+//             //5 io.sockets.emit('mensajes', normalizedMessages);
+//             io.sockets.emit('mensajes', mensajes);
+//         })
         
         
-    }
-    servidorMensajes()
+//     }
+//     servidorMensajes()
     
-})
+// })
 
 const PORT = process.env.PORT || 8080
 

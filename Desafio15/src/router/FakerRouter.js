@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { generarNProductos } = require('../controller/faker.js')
+const { generarNProductos } = require('../controller/fakerController.js')
 
 
 const FakerRouter = Router()

@@ -1,25 +1,12 @@
 const { Router } = require('express')
+const { getInfo, numCPU } = require('../controller/infoController.js')
 
 const InfoRouter = Router()
 
-const numCPUs = require('os').cpus().length
-
-InfoRouter.get('/', (req, res) => {
-    res.sendFile(process.cwd() + '/public/info.html')
+InfoRouter.get('/', numCPU, (req, res) => {
 })
 
-InfoRouter.get('/getInfo', (req, res) => {
-    const info = {
-        argumentosEntrada: process.argv,
-        nombrePlataforma: process.env.OS,
-        versionNodeJS: process.version,
-        memoriaTotalReservada: process.memoryUsage().rss,
-        pathEjecucion: process.env.PWD,
-        processId: process.pid,
-        carpetaProyecto: process.cwd(),
-        numeroProcesadores: numCPUs
-    }
-    res.send(info)
+InfoRouter.get('/getInfo', getInfo, (req, res) => {
 })
 
 exports.InfoRouter = InfoRouter;
