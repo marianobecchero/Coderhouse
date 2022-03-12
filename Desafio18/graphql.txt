@@ -1,0 +1,15 @@
+query {
+ getAllProducts {
+   id, title,price, thumbnail
+ }
+}
+
+mutation {
+ createProduct(data: {
+   title: "HP"
+   price: 35
+  thumbnail: "-"
+ }) {
+   product
+ }
+}

@@ -1,0 +1,13 @@
+{{! {{#if messagesDenormalized.length}}
+{{#if messagesDenormalized.length}}
+<div class="table-responsive">
+        {{! {{#each messagesDenormalized}}
+        {{#each messagesDenormalized}}
+        <div>
+            <strong style="color:blue">{{this.apellido}} {{this.nombre}} </strong> <a style="color:brown">{{this.date}}</a> <a style="color:green">{{this.message}}</a>
+        </div>
+        {{/each}}
+</div>
+{{ else }}
+<h3 class="alert alert-warning">No hay mensajes</h3>
+{{/if}}
