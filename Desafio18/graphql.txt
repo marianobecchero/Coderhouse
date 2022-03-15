@@ -1,6 +1,8 @@
 query {
  getAllProducts {
-   id, title,price, thumbnail
+   title
+   price
+   thumbnail
  }
 }
 
@@ -10,6 +12,6 @@ mutation {
    price: 35
   thumbnail: "-"
  }) {
-   product
+   id
  }
 }

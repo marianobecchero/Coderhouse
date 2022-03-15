@@ -3,25 +3,22 @@ const { buildSchema } =require('graphql')
 
 const schema = buildSchema(`
     input ProductInput {
-        id: String,
-        title: String,
-        price: Float,
+        id: String
+        title: String
+        price: Float
         thumbnail: String
     }
     type Product {
-        id: ID!
-        title: String,
-        price: Float,
+        id: String!
+        title: String
+        price: Float
         thumbnail: String
     }
     type Query {
-        getAllProducts: [Product],
-        getProductById (id: ID!): Product
+        getAllProducts: [Product]
     }
     type Mutation {
-        createProduct (data: ProductInput): Product,
-        updateProductById(id: ID!, data: ProductInput): Product,
-        deleteProductById(id: ID!): Product
+        createProduct (data: ProductInput): Product
     }
 `);
 
@@ -32,8 +29,8 @@ class ProductGraphQLRouter {
     return this.graphqlHTTP({
       schema: schema,
       rootValue: {
-        createProduct: productController.createProductController,
-        getAllProducts: productController.getAllProductsController
+        createProduct: productController.createProduct,
+        getAllProducts: productController.getAllProducts
       },
       graphiql: true,
     });

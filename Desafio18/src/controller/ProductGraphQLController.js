@@ -6,7 +6,8 @@ class ProductGraphQLController {
 
   createProduct = async (data) => {
     const rawProduct = JSON.parse(JSON.stringify(data));
-    const { id, title, price, thumbnail } = rawProduct.data;
+    const id = `${Date.now()}`
+    const { title, price, thumbnail } = rawProduct.data;
     const newProduct = new Product(id, title, price, thumbnail);
     const product = await ProductDao.save(newProduct);
     if (product) {
@@ -19,7 +20,6 @@ class ProductGraphQLController {
 
   getAllProducts = async () => {
     const products = await ProductDao.getAll();
-    console.log(products)
     return products;
   };
 }
