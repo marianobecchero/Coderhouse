@@ -5,20 +5,6 @@ const userController = new UserController()
 
 const PRIVATE_KEY = "admin";
 
-register = async (req, res) => {
-  const { surname, name, username, password, cellphone, photoURL } = req.body
-
-  const newUser = await userController.createUser(surname, name, username, password, cellphone, photoURL)
-  if (!newUser) {
-      return res.status(400).json({ error: 'Username already exist' });
-  }
-
-  return res.status(200).json({ success: 'Successfully registered user' })
-
-  //const access_token = jwt.generateAuthToken(nombre);
-  //res.json({ access_token });
-}
-
 login = async(req, res) => {
   const { username, password } = req.body
   
@@ -101,4 +87,4 @@ auth = async (req, res, next) => {
     next();
   }
 
-module.exports = { register, login, auth, authAdmin }
+module.exports = { login, auth, authAdmin }

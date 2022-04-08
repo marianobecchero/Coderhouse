@@ -16,18 +16,19 @@ ProductsRouter.post('/', authAdmin, (req, res) => {
     execute()
 })
 
-ProductsRouter.delete('/', authAdmin, (req, res) => {
+ProductsRouter.delete('/:idProduct', authAdmin, (req, res) => {
     execute = async() => {
-        const id = req.body.id
+        const id = req.params.idProduct
         const result = await productController.deleteProduct(id)
         return res.status(200).json( result )
     }
     execute()
 })
 
-ProductsRouter.put('/', authAdmin, (req, res) => {
+ProductsRouter.put('/:idProduct', authAdmin, (req, res) => {
     execute = async() => {
-        const { id, title, description, price, photoURL } = req.body
+        const id = req.params.idProduct
+        const { title, description, price, photoURL } = req.body
         const result = await productController.updateProduct(id, title, description, price, photoURL)
         return res.status(200).json( result )
     }
@@ -36,7 +37,7 @@ ProductsRouter.put('/', authAdmin, (req, res) => {
 
 
 /* --------- DATOS (VER PRODUCTOS TODOS LOS USUARIOS, INCLUIDOS LOS QUE NO ESTAN REGISTRADOS) ---------- */
-ProductsRouter.get('/getAll', (req, res) => {
+ProductsRouter.get('/', (req, res) => {
     execute = async() => {
         const result = await productController.getAllProducts()
         return res.status(200).json( result )

@@ -1,51 +1,39 @@
 const { Router } = require('express')
-const { login, auth, register } = require('./middlewares/jwt')
+const { login, auth } = require('./middlewares/jwt')
+const { upload } = require('./middlewares/multer')
+const { UserController } = require ('../controller/UserController')
+
+const userController = new UserController()
 
 
 const UsersRouter = Router()
 
-/* --------- REGISTER ---------- */
+UsersRouter.post('/register', (req,res) => {
+    execute = async() => {
+        const { surname, name, username, password, cellphone } = req.body
 
-/*UsersRouter.get('/register', (req, res) => {
-    res.sendFile(__dirname + '/public/register.html')
-})*/
+        const newUser = await userController.createUser(surname, name, username, password, cellphone, '-')
+        if (!newUser) {
+            return res.status(400).json({ error: 'Username already exist' });
+        }
 
-UsersRouter.post('/register', register, (req,res) => {
+        return res.status(200).json({ success: 'Successfully registered user' })
+    }
+    execute()
 })
-
-/*UsersRouter.get('/register-error', (req, res) => {
-    res.render('register-error');
-})*/
-
-
-/* --------- LOGIN ---------- */
-/*UsersRouter.get('/login', (req, res) => {
-    res.sendFile(__dirname + '/public/login.html')
-})*/
 
 UsersRouter.post('/login', login, (req, res) => {
 })
 
-/*UsersRouter.get('/login-error', (req, res) => {
-    res.render('login-error');
-})*/
-
-/* --------- API DE DATOS ---------- */
-/*UsersRouter.get('/api/datos', auth, (req, res) => {
-    return res.status(200).json({ ok: 'Mariano genio' })
-})*/
-/*UsersRouter.get('/api/datos', jwt.auth, (req, res) => {
-    const usuario = usuarios.find(usuario => usuario.nombre == req.user.nombre)
-    if (!usuario) {
-        return res.status(404).json({ error: 'usuario no encontrado' });
+UsersRouter.post('/upload/:idUser', auth, upload.single('myFile'), (req, res) => {
+    execute = async () => {
+        const idUser = req.params.idUser
+        const photoURL = req.file.path
+        const result = await userController.upload(idUser, photoURL)
+        return res.status(200).json( result )
     }
-
-    usuario.contador++
-    res.json({
-        datos: usuario,
-        contador: usuario.contador
-    })
-})*/
+    execute()
+})
 
 
 exports.UsersRouter = UsersRouter;

@@ -45,6 +45,15 @@ class UserController {
     return user
   }
 
+  upload = async (idUser, photoURL) => {
+    const result = await UserDao.upload(idUser, photoURL)
+    if (result != photoURL){
+      return { error: 'An error occurred while uploading the file' }
+  } else {
+      return { success: 'The file was uploaded successfully' }
+  }
+}
+
 }
 
 function isValidPassword(user, password) {

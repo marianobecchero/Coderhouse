@@ -27,21 +27,13 @@ CartsRouter.delete('/:idCart/products/:idProduct', auth, (req, res) => {
     execute()
 })
 
-/*CartsRouter.get('/getAll', (req, res) => {
+CartsRouter.post('/:idCart', auth, (req, res) => {
     execute = async() => {
-        const result = await productController.getAllProducts()
+        const idCart = req.params.idCart
+        const result = await cartController.buy(idCart)
         return res.status(200).json( result )
     }
     execute()
 })
-
-CartsRouter.put('/', authAdmin, (req, res) => {
-    execute = async() => {
-        const { id, title, description, price, photoURL } = req.body
-        const result = await productController.updateProduct(id, title, description, price, photoURL)
-        return res.status(200).json( result )
-    }
-    execute()
-})*/
 
 exports.CartsRouter = CartsRouter;

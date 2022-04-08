@@ -1,6 +1,9 @@
 const { CartDao } = require('../dao/CartDaoFactory.js')
 const { ProductDao } = require('../dao/ProductDaoFactory.js')
+const { OrderDao } = require('../dao/OrderDaoFactory.js')
 const { Cart } = require('../business/Cart')
+const { Order } = require('../business/Order')
+const { newEmail } = require('../nodemailer')
 
 class CartController {
   constructor() {
@@ -83,6 +86,17 @@ class CartController {
     } else {
         return { error: 'The cart does not exist' }
     }
+}
+
+buy = async (idCart) => {
+    const cart = await CartDao.getById(idCart)
+    const order = new Order(Date(), cart.idUser, cart.products)
+    const result = await CartDao.buy(idCart)
+    if (cart.products.length > 0){
+        await OrderDao.save(order)
+        await newEmail(order)
+    }
+    return result
 }
 
 }

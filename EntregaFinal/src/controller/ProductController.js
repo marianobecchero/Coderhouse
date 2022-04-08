@@ -44,11 +44,6 @@ class ProductController {
       }
   };
 
-  /*getById = async(id) => {
-    const user = await UserDao.getById(id)
-    return user
-  }*/
-
 }
 
 module.exports = { ProductController }

@@ -42,6 +42,7 @@ class MongoDBContainer {
             return obj
             //return { Correcto: 'El objeto se agregó correctamente' }
         } catch (error) {
+            console.log(error)
             return error
         }
     }
@@ -88,10 +89,45 @@ class MongoDBContainer {
             })
             return obj
         } catch(error) {
-            console.log(error)
             return error
         }
 
+    }
+
+    buy = async(idCart) => {
+        const object = await this.collection.findOne({ _id: idCart }, { __v: 0 })
+        try {
+            if (object.products.length > 0){
+                await this.collection.updateOne({ _id: `${idCart}` }, {
+                    products: []
+                })
+                return { success: 'Purchase made correctly' }
+            } else {
+                return { error: 'The car is empty' }
+            }
+        } catch(error) {
+            return { error: 'There was a problem loading the purchase' }
+        }
+
+    }
+
+    getOrdersByUser = async(idUser) => {
+        try{
+          const object = await this.collection.find({ idUser: idUser }, { __v: 0 })
+          return object
+        } catch(error){
+            return error
+        }
+    }
+
+    upload = async(idUser, photoURL) => {
+        try{
+            await this.collection.updateOne({ _id: `${idUser}` }, { photoURL: photoURL })
+            return photoURL
+        } catch(error){
+            console.log(error)
+            return error
+        }
     }
 
     /*saveMensaje = async obj => {
